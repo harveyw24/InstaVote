@@ -18,6 +18,11 @@ const createVote = async (req, res) => {
             return res.status(404).json({error: 'Voting session not found'});
         }
 
+        // Check if vote session closed
+        if (votingSession.closed) {
+            return res.status(400).json({error: 'Voting session closed'});
+        }
+
         // Check if all options are valid
         for (let option of options) {
             if (!votingSession.options.includes(option)) {
@@ -60,6 +65,11 @@ const deleteVote = async (req, res) => {
             return res.status(404).json({error: 'Voting session not found'});
         }
 
+        // Check if vote session closed
+        if (votingSession.closed) {
+            return res.status(400).json({error: 'Voting session closed'});
+        }
+
         const vote = votingSession.votes.find(vote => vote.cookieId === cookieId);
 
         if (!vote) {
@@ -90,6 +100,11 @@ const updateVote = async (req, res) => {
 
         if (!votingSession) {
             return res.status(404).json({error: 'Voting session not found'});
+        }
+
+        // Check if vote session closed
+        if (votingSession.closed) {
+            return res.status(400).json({error: 'Voting session closed'});
         }
 
         let vote = votingSession.votes.find(vote => vote.cookieId === cookieId);

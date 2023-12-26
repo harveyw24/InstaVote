@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { useVoteSessionContext } from '../hooks/useVoteSessionContext';
 
 import VoteSessionDetails from '../components/VoteSessionDetails';
+import VoteSessionForm from '../components/VoteSessionForm';
 
 const Home = () => {
-
-    const [votingSessions, setVotingSessions] = useState(null);
+    const { votingSessions, dispatch } = useVoteSessionContext();
 
     useEffect(() => {
         const fetchVotingSessions = async () => {
@@ -15,10 +16,10 @@ const Home = () => {
             }
         
             const data = await response.json();
-            setVotingSessions(data);
+            dispatch({type: 'SET_VOTING_SESSION', payload: data});
         }
         fetchVotingSessions();
-    }, []);
+    }, [dispatch]);
 
     return (
         <div className="Home">
@@ -27,6 +28,7 @@ const Home = () => {
                     <VoteSessionDetails key={voteSession._id} voteSession={voteSession}/>
                 ))}
             </div>
+            <VoteSessionForm />
         </div>
     );
 }

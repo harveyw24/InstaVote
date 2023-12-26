@@ -37,6 +37,18 @@ const getVotingSession = async (req, res) => {
 const createVotingSession = async (req, res) => {
     const {title, options} = req.body;
 
+    let emptyFields = [];
+
+    if (!title) {
+        emptyFields.push('title');
+    }
+    if (!options || options.length === 0) {
+        emptyFields.push('options');
+    }
+    if (emptyFields.length > 0) {
+        return res.status(400).json({error: 'Missing required fields', emptyFields});
+    }
+
     try {
         const votingSession = await VotingSession.create({
             title,
@@ -45,6 +57,31 @@ const createVotingSession = async (req, res) => {
         res.status(200).json(votingSession);
     } catch (error) {
         res.status(400).json({error: 'Error creating voting session'});
+    }
+}
+
+// Close a voting session
+const closeVotingSession = async (req, res) => {
+    const { id } = req.params;
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).json({error: 'Voting session not found'});
+    }
+
+    try {
+        const votingSession = await VotingSession.findById(id);
+
+        if (!votingSession) {
+            return res.status(404).json({error: 'Voting session not found'});
+        }
+
+        votingSession.closed = true;
+        await votingSession.save();
+
+        res.status(200).json(votingSession);
+
+    } catch (error) {
+        res.status(400).json({error: 'Error closing voting session'});
     }
 }
 
@@ -94,6 +131,7 @@ module.exports = {
     getVotingSessions,
     getVotingSession,
     createVotingSession,
+    closeVotingSession,
     deleteVotingSession,
     updateVotingSession
 }

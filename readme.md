@@ -8,3 +8,5 @@ ExpressVote provides a simple solution for setting up temporary polls and voting
 
 - [ ] Number of required options choice
 - [ ] Vote session description
+
+*Created by Harvey Wang*
