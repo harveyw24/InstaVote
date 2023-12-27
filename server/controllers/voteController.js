@@ -1,18 +1,19 @@
-const Vote = require('../models/voteModel');
 const VotingSession = require('../models/votingSessionModel');
 const mongoose = require('mongoose');
 
 // POST a new vote
 const createVote = async (req, res) => {
-    const { id } = req.params;
+    const { nanoId } = req.params;
     const { cookieId, options } = req.body;
 
-    if (!mongoose.Types.ObjectId.isValid(id)) {
+    console.log(nanoId, cookieId, options);
+
+    if (!nanoId) {
         return res.status(404).json({error: 'Voting session not found'});
     }
 
     try {
-        const votingSession = await VotingSession.findById(id);
+        const votingSession = await VotingSession.findOne({ nanoId: nanoId });
 
         if (!votingSession) {
             return res.status(404).json({error: 'Voting session not found'});

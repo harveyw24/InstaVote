@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Home from "./pages/Home";
+import VoteSession from "./pages/VoteSession";
 import Navbar from "./components/Navbar";
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
         <div className="pages">
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/voteSession/:nanoId" element={<VoteSession />} />
           </Routes>
         </div>
       </Router>

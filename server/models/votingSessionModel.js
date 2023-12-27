@@ -1,8 +1,10 @@
 const mongoose = require('mongoose');
 const VoteSchema = require('./voteModel');
 
-mongoose.set('debug', true);
-console.log(new Date().toUTCString() + ' - ' + 'votingSessionModel.js - mongoose.set(\'debug\', true);');
+let nanoid;
+import('nanoid').then((nano) => {
+  nanoid = nano.nanoid;
+});
 
 const VotingSessionSchema = new mongoose.Schema({
     title: {
@@ -17,6 +19,11 @@ const VotingSessionSchema = new mongoose.Schema({
     closed: {
         type: Boolean,
         default: false
+    },
+    nanoId: {
+        type: String,
+        default: () => nanoid(4),
+        unique: true
     }
 }, { timestamps : true });
 

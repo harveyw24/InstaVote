@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { useVoteSessionContext } from '../hooks/useVoteSessionContext';
+// import { useVoteSessionContext } from '../hooks/useVoteSessionContext';
 
 const VoteSessionForm = () => {
-    const { dispatch } = useVoteSessionContext();
+    // const { dispatch } = useVoteSessionContext();
     const [title, setTitle] = useState('');
     const [options, setOptions] = useState([]);
     const [newOption, setNewOption] = useState('');
@@ -25,13 +25,16 @@ const VoteSessionForm = () => {
         if (!response.ok) {
             setError(data.error);
             setEmptyFields(data.emptyFields);
-        } else {
-            setError(null);
-            setTitle('');
-            setOptions([]);
-            setEmptyFields([]);
-            dispatch({type: 'CREATE_VOTING_SESSION', payload: data});
+            return;
         }
+
+        setError(null);
+        setTitle('');
+        setOptions([]);
+        setEmptyFields([]);
+        // dispatch({type: 'CREATE_VOTING_SESSION', payload: data});
+
+        window.location.href = `/voteSession/${data.nanoId}`;
     };
 
     const handleAddOption = () => {

@@ -8,12 +8,12 @@ const {
 const voteRoutes = express.Router();
 
 // POST a new vote
-voteRoutes.post('/:id', createVote)
+voteRoutes.post('/:nanoId', createVote)
 
 // DELETE a vote
-voteRoutes.delete('/:id', deleteVote)
+voteRoutes.delete('/:nanoId', deleteVote)
 
 // UPDATE a vote
-voteRoutes.put('/:id', updateVote)
+voteRoutes.put('/:nanoId', updateVote)
 
 module.exports = voteRoutes;
