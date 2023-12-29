@@ -2,7 +2,7 @@
 
 ## Summary
 
-ExpressVote provides a simple solution for setting up temporary polls and voting sessions, designed for simplicity and usability.
+InstaVote provides a simple solution for setting up temporary polls and voting sessions, designed for simplicity and usability. The service is free and requires no signup!
 
 ## Todos
 
