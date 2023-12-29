@@ -13,14 +13,13 @@ const VoteSession = () => {
     const { nanoId } = useParams();
     const {voteSession, dispatch} = useVoteSessionContext();
     const [hasVoted, setHasVoted] = useState(false);
-    // const { data: voteSession, loading, error } = useFetch(`http://localhost:4000/api/voteSession/${nanoId}`);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [showNotification, setShowNotification] = useState(false);
     
     const fetchVotingSession = async () => {
         setLoading(true);
-        const response = await fetch(`http://localhost:4000/api/voteSession/${nanoId}`);
+        const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/voteSession/${nanoId}`);
 
         if (!response.ok) {
             setError(response.error);
@@ -40,14 +39,13 @@ const VoteSession = () => {
         setHasVoted(false);
 
         // Check if user has already voted
-        fetch(`http://localhost:4000/api/vote/${nanoId}/${Cookies.get('userId')}`)
+        fetch(`${process.env.REACT_APP_SERVER_URL}/api/vote/${nanoId}/${Cookies.get('userId')}`)
             .then(response => response.json())
             .then(data => {
                 if (data.options && data.options.length > 0) {
                     setHasVoted(true);
                 }
             })
-
 
         fetchVotingSession();
         setError(null);

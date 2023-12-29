@@ -24,7 +24,7 @@ const VoteForm = ({ setHasVoted, voteSession, cookieId }) => {
         const vote = { cookieId, options: selectedOptions };
 
         // TODO: set to server url
-        const response = await fetch(`http://localhost:4000/api/vote/${voteSession.nanoId}`, {
+        const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/vote/${voteSession.nanoId}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

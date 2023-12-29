@@ -28,35 +28,3 @@ mongoose.connect(process.env.ATLAS_URI)
           
      })
      .catch(err => console.log(err));
-
-// get driver connection
-// const dbo = require("./db/conn");
-
-
-// const cors = require('cors');
-// const VotingSession = require('./models/VotingSession');
-// const app = express();
-
-// mongoose.connect('mongodb://localhost/votingApp', {useNewUrlParser: true, useUnifiedTopology: true});
-
-// app.use(cors());
-
-// app.post('/session', async (req, res) => {
-//   const session = new VotingSession(req.body);
-//   await session.save();
-//   res.send(session);
-// });
-
-// app.post('/vote/:sessionId', async (req, res) => {
-//   const session = await VotingSession.findById(req.params.sessionId);
-//   session.votes.push(req.body);
-//   await session.save();
-//   res.send(session);
-// });
-
-// app.get('/result/:sessionId', async (req, res) => {
-//   const session = await VotingSession.findById(req.params.sessionId);
-//   res.send(session.votes);
-// });
-
-// app.listen(3000);

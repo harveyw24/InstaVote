@@ -9,7 +9,7 @@ const VoteSessionDetails = ({ voteSession }) => {
     console.log(Intl.DateTimeFormat().resolvedOptions().timeZone);
 
     const handleDelete = async () => {
-        const response = await fetch(`http://localhost:4000/api/voteSession/${voteSession._id}`, {
+        const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/voteSession/${voteSession._id}`, {
             method: 'DELETE'
         });
 

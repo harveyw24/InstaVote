@@ -15,7 +15,7 @@ const VoteSessionForm = () => {
 
         const voteSession = { title, options };
 
-        const response = await fetch('http://localhost:4000/api/voteSession', {
+        const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/voteSession`, {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(voteSession)

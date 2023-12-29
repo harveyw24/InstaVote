@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react';
-import VoteSessionDetails from '../components/VoteSessionDetails';
+import { useState } from 'react';
 import VoteSessionForm from '../components/VoteSessionForm';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
@@ -8,21 +7,6 @@ import '../styles/home.css';
 const Home = () => {
     const [view, setView] = useState('home');
     const [nanoId, setNanoId] = useState('');
-    // const { votingSessions, dispatch } = useVoteSessionContext();
-
-    // useEffect(() => {
-    //     const fetchVotingSessions = async () => {
-    //         const response = await fetch('http://localhost:4000/api/voteSession');
-    //         if (!response.ok) {
-    //             console.error(`Error: ${response.status}`);
-    //             return;
-    //         }
-        
-    //         const data = await response.json();
-    //         dispatch({type: 'SET_VOTING_SESSION', payload: data});
-    //     }
-    //     fetchVotingSessions();
-    // }, [dispatch]);
 
     const handleBackClick = () => {
         setView('home');
@@ -81,35 +65,6 @@ const Home = () => {
             </div>
         </div>
     );
-
-
-
-    // const { votingSessions, dispatch } = useVoteSessionContext();
-
-    // useEffect(() => {
-    //     const fetchVotingSessions = async () => {
-    //         const response = await fetch('http://localhost:4000/api/voteSession');
-    //         if (!response.ok) {
-    //             console.error(`Error: ${response.status}`);
-    //             return;
-    //         }
-        
-    //         const data = await response.json();
-    //         dispatch({type: 'SET_VOTING_SESSION', payload: data});
-    //     }
-    //     fetchVotingSessions();
-    // }, [dispatch]);
-
-    // return (
-    //     <div className="Home">
-    //         <div className="votingSessions">
-    //             {votingSessions && votingSessions.map(voteSession => (
-    //                 <VoteSessionDetails key={voteSession._id} voteSession={voteSession}/>
-    //             ))}
-    //         </div>
-    //         <VoteSessionForm />
-    //     </div>
-    // );
 }
 
 export default Home;
