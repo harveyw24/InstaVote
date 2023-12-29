@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap');
+
+/* Custom Properties */
+:root {
+  --clr-primary: #7CA982;
+  --clr-accent: #C2A83E;
+  --clr-light: #F1F7ED;
+  --clr-light2: #E0EEC6;
+  --clr-dark: #243E36;
+  --error: #FF0000;
+
+  --ff-primary: 'Merriweather', serif;
+  --ff-header: 'Playfair Display', serif;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+/* General styles */
+
+body {
+  background-color: var(--clr-light2);
+  font-family: var(--ff-primary);
+  margin: 0;
+  height: 100%;
+  padding: 0;
+  overflow: hidden;
+}
+
+header {
+  background: var(--clr-light);
+  font-family: var(--ff-header);
+}
+
+h1, h2 {
+  font-family: var(--ff-header);
+}
+
+h2 {
+  font-size: 1.6em;
+}
+
+/* Header and Navbar */
+
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  height: 4rem;
+}
+
+header a {
+  color: #444;
+  text-decoration: none;
+}
+
+.pages {
+  height: calc(100vh - 4rem);
+  max-width: 1400px;
+  padding: 2rem;
+  margin: 0 auto;
+  align-items: center;
+}
+
+/* Buttons */
+button {
+  background-color: var(--clr-primary);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-family: var(--ff-primary);
+  transition: all 0.2s ease-in-out;
+}
+
+button:hover {
+  background-color: var(--clr-dark);
+}
+
+input[type="text"] {
+  border: 2px solid #FFF;
+  border-radius: 5px; /* adjust as needed */
+  padding: 10px; /* adjust as needed */
+  font-size: 1em; /* adjust as needed */
+  font-family: var(--ff-primary);
+}
+
+input[type="text"]:focus {
+  border: 2px solid var(--clr-dark);
+  outline: none;
+}
+

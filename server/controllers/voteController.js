@@ -6,8 +6,6 @@ const createVote = async (req, res) => {
     const { nanoId } = req.params;
     const { cookieId, options } = req.body;
 
-    console.log(nanoId, cookieId, options);
-
     if (!nanoId) {
         return res.status(404).json({error: 'Voting session not found'});
     }
@@ -124,8 +122,42 @@ const updateVote = async (req, res) => {
     }
 }
 
+// Check if a voter has voted
+const checkVoter = async (req, res) => {
+    const { nanoId, cookieId } = req.params;
+
+    if (!nanoId) {
+        return res.status(404).json({error: 'Voting session not found'});
+    }
+
+    try {
+        const votingSession = await VotingSession.findOne({ nanoId: nanoId });
+
+        if (!votingSession) {
+            return res.status(404).json({error: 'Voting session not found'});
+        }
+
+        // Check if vote session closed
+        if (votingSession.closed) {
+            return res.status(400).json({error: 'Voting session closed'});
+        }
+
+        const vote = votingSession.votes.find(vote => vote.cookieId === cookieId);
+
+        if (!vote) {
+            return res.status(200).json({});
+        }
+
+        res.status(200).json(vote);
+
+    } catch (error) {
+        return res.status(400).json({error: 'Error checking vote'});
+    }
+}
+
 module.exports = {
     createVote,
     deleteVote,
-    updateVote
+    updateVote,
+    checkVoter
 }

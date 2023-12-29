@@ -1,0 +1,145 @@
+.Home {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.lander {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 90%;
+}
+
+.homeOptions {
+    display: flex;
+    justify-content: space-around;
+    width: 90%; /* adjust this value as needed */
+    max-width: 800px;
+    margin-top: 2em;
+}
+
+.welcome h1 {
+    font-size: 3em;
+}
+
+.welcome p {
+    font-size: 1.5em;
+}
+
+.homeOptions button {
+    font-size: 1.5em;
+    padding: 0.5em 1em;
+    border-radius: 1em;
+}
+
+.homeOptions button:hover {
+    transform: scale(1.05); /* adjust as needed */
+}
+
+/* Vote Code Form */
+
+.voteCode {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 800px;
+    background-color: var(--clr-light);
+    padding: 2em 2em;
+    border-radius: 1em;
+    border: 2px solid var(--clr-dark);
+}
+
+.voteCode form button {
+    font-size: 1.5em;
+    padding: 0.5em 1em;
+    border-radius: 1em;
+    margin: 1em 1em;
+}
+
+.voteCode form input {
+    font-size: 3em;
+    max-width: 500px;
+    margin-top: 0.5em;
+}
+
+.voteCode .backButton,
+.createVote .backButton {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+/* Create Vote Form */
+.createVote {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    max-width: 1200px;
+    background-color: var(--clr-light);
+    padding: 2em 2em;
+    border-radius: 1em;
+    border: 2px solid var(--clr-dark);
+}
+
+.createVote form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    width: 100%;
+}
+
+.createVote form label {
+    margin-right: 10px;
+    display: inline-block;
+    width: 12%;
+    text-align: left;
+    min-width: 90px;
+    max-width: 100px;
+    font-size: 1.5em;
+}
+
+.createVote form input {
+    display: inline-block;
+    width: 70%;
+    font-size: 1em;
+    margin: 1em 1em 1em 0;
+}
+
+.formTitle {
+    font-size: 1.5em;
+}
+
+.formOptions {
+    counter-reset: optionNumber;
+}
+
+.formOptions .voteOptions {
+    font-size: 1.4em;
+    margin: 0 1em 1.5em;
+}
+
+.formOptions .voteOption {
+    counter-increment: optionNumber;
+    margin: 0.5em;
+}
+
+.formOptions .voteOption::before {
+    content: counter(optionNumber) ". ";
+}
+
+.delete-icon {
+    color: var(--clr-dark);
+    font-size: 1em;
+    margin-left: 0.8em;
+    cursor: pointer;
+}
+
+.delete-icon:hover {
+    color: var(--clr-accent);
+}

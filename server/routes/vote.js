@@ -2,7 +2,8 @@ const express = require("express");
 const {
     createVote,
     deleteVote,
-    updateVote
+    updateVote,
+    checkVoter
 } = require('../controllers/voteController');
 
 const voteRoutes = express.Router();
@@ -15,5 +16,8 @@ voteRoutes.delete('/:nanoId', deleteVote)
 
 // UPDATE a vote
 voteRoutes.put('/:nanoId', updateVote)
+
+// Check if user has voted
+voteRoutes.get('/:nanoId/:cookieId', checkVoter)
 
 module.exports = voteRoutes;

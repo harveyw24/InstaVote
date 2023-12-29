@@ -1,0 +1,152 @@
+/* Vote Session */
+
+.voteSession {
+    padding: 2rem 3rem;
+    margin-bottom: 1rem;
+    position: relative;
+    background-color: #FFF;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.delete-button {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 10px 20px;
+    background-color: #f44336;
+    color: white;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+}
+
+input.error {
+    border: 1px solid var(--error);
+}
+
+.notification {
+    color: var(--clr-dark);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    z-index: 1000;
+    font-size: 0.6em;
+    margin-left: 1em;
+    transform: translateY(-20px);
+}
+
+.notification.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.copyId {
+    margin-left: 1em;
+    font-size: 0.8em;
+    color: var(--clr-accent);
+    cursor: pointer;
+}
+
+.copyId:hover {
+    color: #B09836;
+}
+
+.copyId .nanoId {
+    text-decoration: underline;
+}
+
+/* Checkboxes */
+.allOptions {
+    padding: 1em;
+    margin-bottom: 1em;
+    font-size: 1.2em;
+}
+
+.allOptions .voteOption {
+    margin-top: 0.5em;
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+
+input[type="checkbox"] + label {
+    position: relative;
+    padding-left: 35px; /* Adjust as needed */
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    margin: 0.2em 0;
+}
+
+input[type="checkbox"] + label::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px; /* Adjust as needed */
+    height: 24px; /* Adjust as needed */
+    border: 2px solid var(--clr-dark);
+    border-radius: 4px; /* Adjust as needed */
+}
+
+input[type="checkbox"]:checked + label::before {
+    background: var(--clr-dark);
+
+}
+
+input[type="checkbox"]:checked + label::after {
+    content: "";
+    position: absolute;
+    left: 9px; /* Adjust as needed */
+    top: 5px; /* Adjust as needed */
+    width: 7px; /* Adjust as needed */
+    height: 13px; /* Adjust as needed */
+    border: solid #FFF;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}
+
+/* Vote Results */
+.vote-results-container {
+    font-size: 1.4em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.vote-results {
+    width: 75%;
+}
+
+.vote-results ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.vote-results-container p {
+    font-size: 0.5em;
+}
+.vote-results li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.vote-results li:last-child {
+    border-bottom: none;
+}
+
+.vote-info {
+    width: 25%;
+    font-size: 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.vote-info button {
+    /* align-self: flex-end; */
+    font-size: 0.5em;
+}

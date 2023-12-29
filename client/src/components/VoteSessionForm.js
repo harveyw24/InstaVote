@@ -1,5 +1,6 @@
 import { useState } from 'react';
-// import { useVoteSessionContext } from '../hooks/useVoteSessionContext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 const VoteSessionForm = () => {
     // const { dispatch } = useVoteSessionContext();
@@ -44,11 +45,15 @@ const VoteSessionForm = () => {
         }
     };
 
-    return (
-        <div>
-            <form className="create" onSubmit={handleSubmit} >
-                <h3>Create a New Vote Session</h3>
+    const handleDeleteOption = (index) => {
+        setOptions(options.filter((_, optionIndex) => optionIndex !== index));
+    };
 
+    return (
+        <form className="create" onSubmit={handleSubmit} >
+            {/* <h3>Create a New Vote Session</h3> */}
+
+            <div className="formTitle">
                 <label htmlFor="title">Title:</label>
                 <input
                     type="text"
@@ -57,7 +62,9 @@ const VoteSessionForm = () => {
                     onChange={(e) => setTitle(e.target.value)}
                     className={emptyFields.includes('title') ? 'error' : ''}
                 />
-
+            </div>
+            
+            <div className="formOptions">
                 <label htmlFor="options">Options:</label>
                 <input
                     type="text"
@@ -65,18 +72,23 @@ const VoteSessionForm = () => {
                     value={newOption}
                     onChange={(e) => setNewOption(e.target.value)}
                     className={emptyFields.includes('options') ? 'error' : ''}
-                ></input>
+                />
 
-                <button type="button" onClick={handleAddOption}>Add Option</button>
+                <button type="button" onClick={handleAddOption}>Add</button>
 
-                {options.map((option, index) => (
-                    <div key={index}>{option}</div>
-                ))}
+                <div className="voteOptions">
+                    {options.map((option, index) => (
+                        <div className="voteOption" key={index}>
+                            {option}
+                            <FontAwesomeIcon icon={faTrash} onClick={() => handleDeleteOption(index)} className="delete-icon" />
+                        </div>
+                    ))}
+                </div>
+            </div>
 
-                <button type="submit">Create Vote Session</button>
-                {error && <div className="error">{error}</div>}
-            </form>
-        </div>
+            <button type="submit">Create Vote Session</button>
+            {error && <div className="error">{error}</div>}
+        </form>
     );
 };
 
